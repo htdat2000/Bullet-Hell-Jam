@@ -7,9 +7,9 @@ namespace EnedUtil
 {
     public class EnedPoolManager : MonoBehaviour
     {
-        private Dictionary<string, List<IPoolable>> pools = new();
+        protected Dictionary<string, List<IPoolable>> pools = new();
 
-        public IPoolable GetObject(string key, Func<IPoolable> structureMethod)
+        public virtual IPoolable GetObject(string key, Func<IPoolable> structureMethod)
         {
             if (this.pools.ContainsKey(key) == false)
             {
@@ -35,12 +35,12 @@ namespace EnedUtil
             }
         }
 
-        private void ClearAll()
+        protected virtual void ClearAll()
         {
             this.pools.Clear();
         }
 
-        private void Clear(string key)
+        protected virtual void Clear(string key)
         {
             if (this.pools.ContainsKey(key))
                 this.pools[key].Clear();
