@@ -27,6 +27,7 @@ namespace EnedUtil
                     item.clip = audioClip;
                     item.volume = volume * this.audioSourcesDic[type].volume;
                     item.loop = isLoop;
+                    item.Play();
                     return item;
                 }
             }
@@ -36,6 +37,7 @@ namespace EnedUtil
             newAudioSource.clip = audioClip;
             newAudioSource.volume = volume * this.audioSourcesDic[type].volume;
             newAudioSource.loop = isLoop;
+            newAudioSource.Play();
 
             return newAudioSource;
         }
