@@ -26,34 +26,64 @@ public class SplatterBullet : MonoBehaviour
         new Vector3 (-Mathf.Sqrt(2)/2, -Mathf.Sqrt(2)/2, 0)
     };
 
-    protected void FixedUpdate()
+    protected float countdown = 0;
+    protected float spawnTime = 2;
+
+    protected void Start()
     {
         
     }
-    protected void TriggerBullet()
+    protected void Update()
     {
-
-    }
-    protected void SpawnBulletAtStandardPos()
-    {
-        foreach(Vector3 pos in standardPos)
+        
+        if(countdown > 0)
         {
-            Vector3 dir = pos - this.transform.position;
-            BasicBullet basicBull = Instantiate(bullet, pos * scalePos, Quaternion.identity).GetComponent<BasicBullet>();
-            basicBull.SetDir(dir);
+            countdown -= Time.deltaTime;
+        } 
+        else
+        {
+            SpawnBulletAtRandomPos();
+            countdown = spawnTime;
         }
     }
-    protected void SpawnBulletOfSecondGroupPos()
-    {
-        foreach(Vector3 pos in secondPos)
+    protected void ShootBulletAllDirection(int numOfPosGroup) 
+    {   
+        //NumOfPosGroup is the number of pos you want to spawn
+        if(numOfPosGroup == 1)
         {
-            Vector3 dir = pos - this.transform.position;
-            BasicBullet basicBull = Instantiate(bullet, pos * scalePos, Quaternion.identity).GetComponent<BasicBullet>();
-            basicBull.SetDir(dir);
+            SpawnBulletAtPosGroup(standardPos);
+        }
+        else if(numOfPosGroup == 2)
+        {
+            SpawnBulletAtPosGroup(standardPos);
+            SpawnBulletAtPosGroup(secondPos);
+        }
+        else
+        {
+            SpawnBulletAtPosGroup(standardPos);
         }
     }
-    protected void spawnBulletOfThirdGroupPos()
+    protected void SpawnBulletAtPosGroup(Vector3[] spawnPosGroup)
     {
-
+        foreach(Vector3 pos in spawnPosGroup)
+        {
+            Spawn(pos);
+        }
+    }
+    protected void SpawnBulletAtRandomPos()
+    {
+        List<Vector3> tempList = new List<Vector3>();
+        tempList.AddRange(standardPos);
+        tempList.AddRange(secondPos);
+        
+        int maxIndex = tempList.Count;
+        Spawn(tempList[Random.Range(0, maxIndex)]);
+    }
+    protected void Spawn(Vector3 pos)
+    {
+        Vector3 spawnPos = this.transform.position + (pos * scalePos);
+            Vector3 dir = pos - this.transform.position;
+            BasicBullet basicBull = Instantiate(bullet, spawnPos, Quaternion.identity).GetComponent<BasicBullet>();
+            basicBull.SetDir(dir);
     }
 }
