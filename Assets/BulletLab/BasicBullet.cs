@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
-    [SerializeField] protected float speed; 
+    [SerializeField] protected float speed = 5; 
     protected Vector3 dir;
 
     protected void Update()
