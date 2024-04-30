@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnedUtil;
 
-public class MucTheBullet : BasicBullet, IPoolable
+public class TheBullet : BasicBullet, IPoolable
 {
     [SerializeField] private float lifeTime = 1f;
     private void Start()

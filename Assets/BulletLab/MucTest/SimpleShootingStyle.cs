@@ -2,18 +2,18 @@ using System;
 using EnedUtil;
 using UnityEngine;
 
-namespace MucDemo
+namespace Bullet
 {
-    public class MucTheSimpleShootingStyle : MucTheShootingStyle
+    public class SimpleShootingStyle : ShootingStyle
     {
         public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, Action onShotFinish = null)
         {
             base.Trigger(bulletSample, poolManager);
-            MucTheBullet currentSample =  this.poolManager.GetObject("Simple", () => 
+            TheBullet currentSample =  this.poolManager.GetObject("Simple", () => 
             {
                 IPoolable ipoolable = Instantiate(bulletSample).GetComponent<IPoolable>();
                 return ipoolable;
-            }) as MucTheBullet;
+            }) as TheBullet;
 
             currentSample.SetActive(true);
             currentSample.SetDir(Vector2.down);

@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnedUtil;
 
-namespace MucDemo
+namespace Bullet
 {
-    public class MucTheShooter : MonoBehaviour
+    public class Shooter : MonoBehaviour
     {
-        [SerializeField] private MucTheBullet bulletSample;
+        [SerializeField] private TheBullet bulletSample;
         [SerializeField] private EnedPoolManager poolManager;
-        [SerializeField] private MucTheShootingStyle currentShootingStyle;
+        [SerializeField] private ShootingStyle currentShootingStyle;
 
         private void Update()
         {

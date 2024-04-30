@@ -2,9 +2,9 @@ using System;
 using EnedUtil;
 using UnityEngine;
 
-namespace MucDemo
+namespace Bullet
 {
-    public class MucTheShootingStyle : MonoBehaviour
+    public class ShootingStyle : MonoBehaviour
     {
         protected EnedPoolManager poolManager;
         public virtual void Trigger(BasicBullet basicBullet, EnedPoolManager poolManager, Action onShotFinish = null)

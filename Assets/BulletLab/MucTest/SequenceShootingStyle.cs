@@ -3,9 +3,9 @@ using System.Collections;
 using EnedUtil;
 using UnityEngine;
 
-namespace MucDemo
+namespace Bullet
 {
-    public class MucTheSequenceShootingStyle : MucTheShootingStyle
+    public class SequenceShootingStyle : ShootingStyle
     {
         public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, Action onShotFinish = null)
         {
@@ -19,11 +19,11 @@ namespace MucDemo
             Vector2 currentDir = Vector2.down;
             for( int i = 0; i < 16; i++)
             {
-                MucTheBullet currentSample =  this.poolManager.GetObject("Simple", () => 
+                TheBullet currentSample =  this.poolManager.GetObject("Simple", () => 
                 {
                     IPoolable ipoolable = Instantiate(bulletSample).GetComponent<IPoolable>();
                     return ipoolable;
-                }) as MucTheBullet;
+                }) as TheBullet;
 
                 currentSample.SetActive(true);
                 currentSample.SetDir(currentDir);
