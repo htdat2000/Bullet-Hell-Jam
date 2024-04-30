@@ -11,18 +11,18 @@ namespace EnedUtil
 
         public virtual IPoolable GetObject(string key, Func<IPoolable> structureMethod)
         {
-            if (this.pools.ContainsKey(key) == false)
+            if (this.pools.ContainsKey(key) == false) //The pool doesn't contain the key item currently
             {
-                IPoolable newItem = structureMethod?.Invoke();
-                this.pools.Add(key, new());
-                this.pools[key].Add(newItem);
+                IPoolable newItem = structureMethod?.Invoke(); //Instantiate new item
+                this.pools.Add(key, new()); //creating a new key, list for it 
+                this.pools[key].Add(newItem); //then add the item to list
 
                 return newItem;
             }
-            else
-            {
-                foreach (IPoolable item in this.pools[key])
-                {
+            else    //if there is a list corresponding to the key in the dictionary
+            {       //just find and get item if it is available
+                foreach (IPoolable item in this.pools[key]) 
+                {   
                     if (item == null)
                         this.pools[key].Remove(item);
                     else if (item.IsActivating() == false)

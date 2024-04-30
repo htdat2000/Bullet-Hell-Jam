@@ -8,9 +8,9 @@ namespace Bullet
 {
     public class Shooter : MonoBehaviour
     {
-        [SerializeField] private TheBullet bulletSample;
+        [SerializeField] private TheBullet bulletSample; //the bullet that will be shoot
         [SerializeField] private EnedPoolManager poolManager;
-        [SerializeField] private ShootingStyle currentShootingStyle;
+        [SerializeField] private ShootingStyle currentShootingStyle; //the way that the bullet is shooted
 
         private void Update()
         {

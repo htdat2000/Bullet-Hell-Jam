@@ -12,7 +12,7 @@ namespace EnedUtil
             Activate();
         }
 
-        public void Activate()
+        public void Activate() //Set active and deactive it later
         {
             this.gameObject.SetActive(true);
             isActivating = true;
