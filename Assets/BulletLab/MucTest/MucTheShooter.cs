@@ -10,13 +10,13 @@ namespace MucDemo
     {
         [SerializeField] private MucTheBullet bulletSample;
         [SerializeField] private EnedPoolManager poolManager;
-        [SerializeField] private MucTheSimpleShootingStyle mucTheSimpleShootingStyle;
+        [SerializeField] private MucTheShootingStyle currentShootingStyle;
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                this.mucTheSimpleShootingStyle.Trigger(bulletSample, poolManager);
+                this.currentShootingStyle.Trigger(bulletSample, poolManager);
             }
         }
 

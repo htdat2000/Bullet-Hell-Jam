@@ -1,3 +1,4 @@
+using System;
 using EnedUtil;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace MucDemo
 {
     public class MucTheSimpleShootingStyle : MucTheShootingStyle
     {
-        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager)
+        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, Action onShotFinish = null)
         {
             base.Trigger(bulletSample, poolManager);
             MucTheBullet currentSample =  this.poolManager.GetObject("Simple", () => 
@@ -16,6 +17,8 @@ namespace MucDemo
 
             currentSample.SetActive(true);
             currentSample.SetDir(Vector2.down);
+
+            if (onShotFinish != null) onShotFinish?.Invoke();
         }
     }
 }
