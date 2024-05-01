@@ -16,7 +16,7 @@ namespace Bullet
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                this.currentShootingStyle.Trigger(bulletSample, poolManager);
+                this.currentShootingStyle.Trigger(bulletSample, poolManager, this.gameObject);
             }
         }
 

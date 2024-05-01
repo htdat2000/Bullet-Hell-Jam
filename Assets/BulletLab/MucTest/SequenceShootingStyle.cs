@@ -7,9 +7,9 @@ namespace Bullet
 {
     public class SequenceShootingStyle : ShootingStyle
     {
-        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, Action onShotFinish = null)
+        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, GameObject shooter, Action onShotFinish = null)
         {
-            base.Trigger(bulletSample, poolManager);
+            base.Trigger(bulletSample, poolManager, shooter);
 
             StartCoroutine(DoSequenceShoot(bulletSample, poolManager, onShotFinish));            
         }

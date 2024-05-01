@@ -7,7 +7,7 @@ namespace Bullet
     public class ShootingStyle : MonoBehaviour
     {
         protected EnedPoolManager poolManager;
-        public virtual void Trigger(BasicBullet basicBullet, EnedPoolManager poolManager, Action onShotFinish = null)
+        public virtual void Trigger(BasicBullet basicBullet, EnedPoolManager poolManager, GameObject shooter, Action onShotFinish = null)
         {
             this.poolManager = poolManager;
         }
@@ -18,6 +18,18 @@ namespace Bullet
 
             Vector2 result = new Vector2(newX, newY);
             return result;
+        }
+        protected virtual void SpawnBullet(string bulletKey, BasicBullet bulletSample, Vector2 _dir, GameObject shooter)
+        {
+            TheBullet currentSample =  this.poolManager.GetObject(bulletKey, () => 
+                {
+                    IPoolable ipoolable = Instantiate(bulletSample).GetComponent<IPoolable>();
+                    return ipoolable;
+                }) as TheBullet;
+                currentSample.gameObject.transform.position = shooter.transform.position;
+                currentSample.SetActive(true);
+
+                currentSample.SetDir(_dir);
         }
     }
 }
