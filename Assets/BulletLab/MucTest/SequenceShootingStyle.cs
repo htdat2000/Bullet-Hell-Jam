@@ -10,16 +10,14 @@ namespace Bullet
         [SerializeField] protected int numberOfProjectiles = 16;
         [SerializeField] protected float cooldownTime = 0.2f;
 
-        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, GameObject shooter, Action onShotFinish = null)
+        public override void Trigger(GameObject shooter, 
+            Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
-            base.Trigger(bulletSample, poolManager, shooter);
-
-            StartCoroutine(DoSequenceShoot(bulletSample, shooter));
-            
+            StartCoroutine(DoSequenceShoot(spawnBullet, shooter));
             if (onShotFinish != null) onShotFinish?.Invoke();
         }
 
-        private IEnumerator DoSequenceShoot(BasicBullet bulletSample, GameObject shooter)
+        private IEnumerator DoSequenceShoot(Action<Vector2> spawnBullet, GameObject shooter)
         {
             if (numberOfProjectiles == 0)
             {
@@ -31,7 +29,7 @@ namespace Bullet
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                SpawnBullet("Simple", bulletSample, currentDir, shooter);
+                if (spawnBullet != null) spawnBullet?.Invoke(currentDir);
                 currentDir = GetRotatedVector(currentDir, angleStep);
 
                 yield return new WaitForSeconds(cooldownTime);

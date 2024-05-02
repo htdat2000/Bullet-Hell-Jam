@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using EnedUtil;
 using UnityEngine;
 using System;
 
@@ -10,20 +9,20 @@ namespace Bullet
     {
         [SerializeField] protected int numberOfProjectiles = 16;
         
-        public override void Trigger(BasicBullet bulletSample, EnedPoolManager poolManager, GameObject shooter, Action onShotFinish = null)
+        public override void Trigger(GameObject shooter, 
+            Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
-           base.Trigger(bulletSample, poolManager, shooter);
-           if (numberOfProjectiles == 0)
+            if (numberOfProjectiles == 0)
             {
                 numberOfProjectiles = 16;
             }
 
-            float angleStep = 360 / numberOfProjectiles * (Mathf.PI / 180);
+            float angleStep = (2 * Mathf.PI) / numberOfProjectiles;
             Vector2 currentDir = Vector2.down;
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                SpawnBullet("Simple", bulletSample, currentDir, shooter);
+                if (spawnBullet != null) spawnBullet?.Invoke(currentDir);
                 currentDir = GetRotatedVector(currentDir, angleStep);
             }
         }

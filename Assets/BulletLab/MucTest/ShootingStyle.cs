@@ -6,11 +6,9 @@ namespace Bullet
 {
     public class ShootingStyle : MonoBehaviour
     {
-        protected EnedPoolManager poolManager;
-        public virtual void Trigger(BasicBullet basicBullet, EnedPoolManager poolManager, GameObject shooter, Action onShotFinish = null)
-        {
-            this.poolManager = poolManager;
-        }
+        protected GameObject timer;
+        public virtual void Trigger(GameObject shooter, 
+            Action<Vector2> spawnBullet, Action onShotFinish = null){}
         protected Vector2 GetRotatedVector(Vector2 startVector, float angleInRadians)
         {
             float newX = startVector.x * Mathf.Cos(angleInRadians) - startVector.y * Mathf.Sin(angleInRadians);
@@ -18,18 +16,6 @@ namespace Bullet
 
             Vector2 result = new Vector2(newX, newY).normalized;
             return result;
-        }
-        protected virtual void SpawnBullet(string bulletKey, BasicBullet bulletSample, Vector2 _dir, GameObject shooter)
-        {
-            TheBullet currentSample =  this.poolManager.GetObject(bulletKey, () => 
-                {
-                    IPoolable ipoolable = Instantiate(bulletSample).GetComponent<IPoolable>();
-                    return ipoolable;
-                }) as TheBullet;
-                currentSample.gameObject.transform.position = shooter.transform.position;
-                currentSample.SetActive(true);
-
-                currentSample.SetDir(_dir);
         }
     }
 }
