@@ -16,7 +16,7 @@ namespace Bullet
             float newX = startVector.x * Mathf.Cos(angleInRadians) - startVector.y * Mathf.Sin(angleInRadians);
             float newY = startVector.x * Mathf.Sin(angleInRadians) + startVector.y * Mathf.Cos(angleInRadians);
 
-            Vector2 result = new Vector2(newX, newY);
+            Vector2 result = new Vector2(newX, newY).normalized;
             return result;
         }
         protected virtual void SpawnBullet(string bulletKey, BasicBullet bulletSample, Vector2 _dir, GameObject shooter)

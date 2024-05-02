@@ -603,6 +603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7cc8d6386a2c94e8d26e25a0ad5e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfProjectiles: 16
+  cooldownTime: 0.2
 --- !u!4 &2127480832
 Transform:
   m_ObjectHideFlags: 0
