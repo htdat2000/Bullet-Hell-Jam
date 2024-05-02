@@ -17,10 +17,10 @@ namespace Bullet
 
             for (int i = 0; i < 3; i++)
             {
-                if (spawnBullet != null) spawnBullet?.Invoke(hardDirs[i]);
+                spawnBullet?.Invoke(hardDirs[i]);
             }
 
-            if (onShotFinish != null) onShotFinish?.Invoke();
+            onShotFinish?.Invoke();
         }
     }
 }

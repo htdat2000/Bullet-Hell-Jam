@@ -22,11 +22,11 @@ namespace Bullet
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                if (spawnBullet != null) spawnBullet?.Invoke(currentDir);
+                spawnBullet?.Invoke(currentDir);
                 currentDir = GetRotatedVector(currentDir, angleStep);
             }
             
-            if (onShotFinish != null) onShotFinish?.Invoke();
+            onShotFinish?.Invoke();
         }
     }
 }
