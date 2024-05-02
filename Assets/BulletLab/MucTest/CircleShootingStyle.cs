@@ -26,6 +26,8 @@ namespace Bullet
                 SpawnBullet("Simple", bulletSample, currentDir, shooter);
                 currentDir = GetRotatedVector(currentDir, angleStep);
             }
+            
+            if (onShotFinish != null) onShotFinish?.Invoke();
         }
     }
 }
