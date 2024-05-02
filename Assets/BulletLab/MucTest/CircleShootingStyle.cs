@@ -25,6 +25,8 @@ namespace Bullet
                 if (spawnBullet != null) spawnBullet?.Invoke(currentDir);
                 currentDir = GetRotatedVector(currentDir, angleStep);
             }
+            
+            if (onShotFinish != null) onShotFinish?.Invoke();
         }
     }
 }
