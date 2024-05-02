@@ -10,32 +10,32 @@ namespace Bullet
         [SerializeField] protected int numberOfProjectiles = 16;
         [SerializeField] protected float cooldownTime = 0.2f;
 
+        private int currentProjectiles = 0;
+        Vector2 currentDir = Vector2.down;
+        float angleStep => (2 * Mathf.PI) / numberOfProjectiles;
+
         public override void Trigger(GameObject shooter, 
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
-            StartCoroutine(DoSequenceShoot(spawnBullet, shooter));
+            CallRecursive(spawnBullet, onShotFinish);
             if (onShotFinish != null) onShotFinish?.Invoke();
         }
 
-        private IEnumerator DoSequenceShoot(Action<Vector2> spawnBullet, GameObject shooter)
+        private void CallRecursive(Action<Vector2> spawnBullet, Action onShotFinish)
         {
-            if (numberOfProjectiles == 0)
-            {
-                numberOfProjectiles = 16;
-            }
-
-            float angleStep = 360 / numberOfProjectiles * (Mathf.PI / 180);
-            Vector2 currentDir = Vector2.down;
-
-            for (int i = 0; i < numberOfProjectiles; i++)
-            {
-                if (spawnBullet != null) spawnBullet?.Invoke(currentDir);
-                currentDir = GetRotatedVector(currentDir, angleStep);
-
-                yield return new WaitForSeconds(cooldownTime);
-            }
+            ShootingSupporter.Instance.DelayCall(cooldownTime, currentProjectiles < numberOfProjectiles,
+                next: () => {
+                    currentProjectiles ++;
+                    spawnBullet?.Invoke(currentDir);
+                    currentDir = GetRotatedVector(currentDir, angleStep);
+                    CallRecursive(spawnBullet, onShotFinish);
+                },
+                end: () =>{
+                    currentProjectiles = 0;
+                    Vector2 currentDir = Vector2.down;
+                    onShotFinish?.Invoke();
+                });
         }
-
     }
 
 }

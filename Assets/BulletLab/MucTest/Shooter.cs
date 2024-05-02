@@ -11,11 +11,13 @@ namespace Bullet
         [SerializeField] private TheBullet bulletSample; //the bullet that will be shoot
         [SerializeField] private EnedPoolManager poolManager;
         [SerializeField] private ShootingStyle currentShootingStyle; //the way that the bullet is shooted
+        [SerializeField] private eShootingStyleType eShootingStyleType;
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                CheckShootingStyle();
                 Shot();
             }
         }
@@ -37,6 +39,28 @@ namespace Bullet
                 currentSample.SetActive(true);
 
                 currentSample.SetDir(_dir);
+        }
+
+        protected virtual void CheckShootingStyle()
+        {
+            switch (this.eShootingStyleType)
+            {
+                case eShootingStyleType.Simple:
+                    this.currentShootingStyle = new SimpleShootingStyle();
+                break;
+                case eShootingStyleType.Trident:
+                    this.currentShootingStyle = new TridentShootingStyle();
+                break;
+                case eShootingStyleType.Sequence:
+                    this.currentShootingStyle = new SequenceShootingStyle();
+                break;
+                case eShootingStyleType.Circle:
+                    this.currentShootingStyle = new CircleShootingStyle();
+                break;
+                case eShootingStyleType.MultiWay:
+                    this.currentShootingStyle = new MultiWayShootingStyle();
+                break;
+            }
         }
     }
 }

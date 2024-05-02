@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Bullet
 {
-    public class ShootingStyle : MonoBehaviour
+    public class ShootingStyle
     {
         protected GameObject timer;
         public virtual void Trigger(GameObject shooter, 
