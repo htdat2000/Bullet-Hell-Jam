@@ -12,12 +12,7 @@ namespace Bullet
         public override void Trigger(GameObject shooter, 
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
-            if (numberOfProjectiles == 0)
-            {
-                numberOfProjectiles = 16;
-            }
-
-            float angleStep = (2 * Mathf.PI) / numberOfProjectiles;
+            float angleStep = (2 * Mathf.PI) / (numberOfProjectiles - 1);
             Vector2 currentDir = Vector2.down;
 
             for (int i = 0; i < numberOfProjectiles; i++)

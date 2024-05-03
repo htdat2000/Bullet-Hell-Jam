@@ -466,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
   poolManager: {fileID: 1678529288}
-  eShootingStyleType: 0
+  eShootingStyleType: 2
 --- !u!4 &1678529287
 Transform:
   m_ObjectHideFlags: 0
