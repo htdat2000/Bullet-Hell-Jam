@@ -11,7 +11,7 @@ public class BasicBullet : MonoBehaviour
     {
         Move();
     }
-    protected void Move()
+    protected virtual void Move()
     {
         transform.Translate(speed * Time.deltaTime * dir);
     }

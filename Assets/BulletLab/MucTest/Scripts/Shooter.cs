@@ -15,7 +15,6 @@ namespace Bullet
 
         private void Update()
         {
-            Debug.Log(Mathf.Sin(Time.time));
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 CheckShootingStyle();
@@ -60,6 +59,9 @@ namespace Bullet
                     break;
                 case eShootingStyleType.MultiWay:
                     this.currentShootingStyle = new MultiWayShootingStyle();
+                    break;
+                case eShootingStyleType.Spread:
+                    this.currentShootingStyle = new SpreadShootingStyle();
                     break;
             }
         }

@@ -12,5 +12,6 @@ namespace Bullet
         Sequence,
         Circle,
         MultiWay,
+        Spread
     }
 }
