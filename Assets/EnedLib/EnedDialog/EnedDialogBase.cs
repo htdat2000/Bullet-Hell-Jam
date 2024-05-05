@@ -24,7 +24,7 @@ namespace EnedUtil
 
             return this.sentences;
         }
-        public EnedSentence GetEnedSentence(out bool isSuccess, int sentenceIndex = -1)
+        public EnedSentence GetSentence(out bool isSuccess, int sentenceIndex = -1)
         {
             if (sentenceIndex < 0)
                 sentenceIndex = currentSentenceIndex;
@@ -35,15 +35,10 @@ namespace EnedUtil
                 isSuccess = true;
                 return sentences[sentenceIndex];
             }
-            Debug.Log("[EnedDialog/GetEnedSentence] End of dialog");
+            Debug.Log("[EnedDialog/GetSentence] End of dialog");
             isSuccess = false;
             return null;
         }
-        // public EnedSentence NextSentence(out bool isFinish)
-        // {
-        //     isFinish = false;
-        //     return null;
-        // }
     }
 
     public class EnedSentence

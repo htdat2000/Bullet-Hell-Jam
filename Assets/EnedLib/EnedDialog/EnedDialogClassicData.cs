@@ -9,16 +9,6 @@ namespace EnedUtil
     public class EnedDialogClassicData : ScriptableObject, IEDialogConvertible
     {
         public List<EnedSentenceClassicData> sentenceClassicDatas;
-        public List<EnedSentence> GetDialogData()
-        {
-            List<EnedSentence> result = new List<EnedSentence>();
-            foreach (EnedSentenceClassicData sentence in sentenceClassicDatas)
-            {
-                result.Add(sentence.ConvertToSentence());
-            }
-            return result;
-        }
-
         public List<EnedSentence> ConvertToSentenceList(out bool isSuccess)
         {
             List<EnedSentence> result = new List<EnedSentence>();

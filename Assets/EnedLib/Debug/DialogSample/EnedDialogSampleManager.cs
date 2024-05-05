@@ -14,10 +14,10 @@ namespace Dialog
             dialogData = new();
             dialogData.LoadDialog(data);
 
-            Debug.Log(dialogData.GetEnedSentence(out bool _)?.ToString());
-            Debug.Log(dialogData.GetEnedSentence(out bool _)?.ToString());
-            Debug.Log(dialogData.GetEnedSentence(out bool _)?.ToString());
-            Debug.Log(dialogData.GetEnedSentence(out bool _)?.ToString());
+            Debug.Log(dialogData.GetSentence(out bool _)?.ToString());
+            Debug.Log(dialogData.GetSentence(out bool _)?.ToString());
+            Debug.Log(dialogData.GetSentence(out bool _)?.ToString());
+            Debug.Log(dialogData.GetSentence(out bool _)?.ToString());
         }
     }
 }
