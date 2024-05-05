@@ -5,9 +5,9 @@ using UnityEngine;
 public class BasicBullet : MonoBehaviour
 {
     [SerializeField] protected float speed; 
-    protected Vector3 dir;
+    protected Vector2 dir;
 
-    protected void Update()
+    protected virtual void Update()
     {
         Move();
     }
@@ -15,7 +15,12 @@ public class BasicBullet : MonoBehaviour
     {
         transform.Translate(speed * Time.deltaTime * dir);
     }
-    public void SetDir(Vector3 _dir)
+    public virtual void SetActive(bool IsActivating)
+    {
+        this.gameObject.SetActive(true);
+        this.transform.position = this.transform.position;
+    }
+    public virtual void SetDir(Vector2 _dir)
     {
         dir = _dir;
     }

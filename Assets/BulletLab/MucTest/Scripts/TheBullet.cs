@@ -11,10 +11,9 @@ public class TheBullet : BasicBullet, IPoolable
         SetActive(true);
     }
 
-    public void SetActive(bool IsActivating)
+    public override void SetActive(bool IsActivating)
     {
-        this.gameObject.SetActive(true);
-        this.transform.position = this.transform.position;
+        base.SetActive(IsActivating);
         StartCoroutine(DelayDead(lifeTime));
     }
 
