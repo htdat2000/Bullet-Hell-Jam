@@ -8,7 +8,7 @@ namespace Bullet
 {
     public class Shooter : MonoBehaviour
     {
-        [SerializeField] private TheBullet bulletSample; //the bullet that will be shoot
+        [SerializeField] private BasicBullet bulletSample; //the bullet that will be shoot
         [SerializeField] private EnedPoolManager poolManager;
         [SerializeField] private ShootingStyle currentShootingStyle; //the way that the bullet is shooted
         [SerializeField] private eShootingStyleType eShootingStyleType;
@@ -30,11 +30,11 @@ namespace Bullet
 
         protected virtual void SpawnBullet(string bulletKey, BasicBullet bulletSample, Vector2 _dir)
         {
-            TheBullet currentSample = this.poolManager.GetObject(bulletKey, () =>
+            BasicBullet currentSample = this.poolManager.GetObject(bulletKey, () =>
                 {
                     IPoolable ipoolable = Instantiate(bulletSample).GetComponent<IPoolable>();
                     return ipoolable;
-                }) as TheBullet;
+                }) as BasicBullet;
             currentSample.gameObject.transform.position = this.transform.position;
             currentSample.SetActive(true);
 
