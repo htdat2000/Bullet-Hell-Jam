@@ -7,8 +7,9 @@ public class BasicBullet : MonoBehaviour
     [SerializeField] protected float speed; 
     protected Vector3 dir;
 
-    protected void Update()
+    protected virtual void Update()
     {
+
         Move();
     }
     protected virtual void Move()

@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveBullet : BasicBullet
+public class WaveBullet : TheBullet
 {
-    protected void Start()
+    protected float timer = 0;
+
+    protected override void Update()
     {
-        dir = new Vector2 (1, 1);
-        
+        Move();
+    }
+    protected virtual void OnDisable()
+    {
+        timer = 0;
     }
     protected override void Move()
     {
-
-        transform.Translate(new Vector2 (1, 1 * Mathf.Sin(Time.time * 5)) * speed * Time.deltaTime);
+        transform.Translate(dir * speed * Time.deltaTime);
+        transform.Translate(new Vector2 (- dir.y, dir.x) * Mathf.Cos(timer*5) * speed * Time.deltaTime);
+        timer += Time.deltaTime;
     }
 }
