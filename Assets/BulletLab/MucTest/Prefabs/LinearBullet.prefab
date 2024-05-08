@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3308035011917754379}
   - component: {fileID: 3308035011917754381}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: LinearBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

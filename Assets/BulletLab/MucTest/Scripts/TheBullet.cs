@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnedUtil;
 
-public class TheBullet : BasicBullet, IPoolable
+public class TheBullet : MonoBehaviour, IPoolable 
 {
-    [SerializeField] private float lifeTime = 1f;
-    private void Start()
+    [SerializeField] protected float speed; 
+    protected Vector2 dir;
+
+    [SerializeField] protected float lifeTime = 1f;
+
+    protected virtual void Start()
     {
         SetActive(true);
-    }
-
-    public override void SetActive(bool IsActivating)
+    }    
+    protected virtual void Update()
     {
-        base.SetActive(IsActivating);
-        StartCoroutine(DelayDead(lifeTime));
+        Move();
     }
-
-    private IEnumerator DelayDead(float lifeTime)
+    protected virtual void Move(){}
+    public virtual void SetActive(bool IsActivating)
+    {
+        this.gameObject.SetActive(true);
+        StartCoroutine(DelayDead(lifeTime));
+        //this.transform.position = this.transform.position;
+    }
+    public virtual void SetDir(Vector2 _dir)
+    {
+        dir = _dir;
+    }
+    protected IEnumerator DelayDead(float lifeTime)
     {
         yield return new WaitForSeconds(lifeTime);
         this.transform.position = Vector3.zero;

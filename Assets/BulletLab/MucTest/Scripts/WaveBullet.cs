@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class WaveBullet : TheBullet
 {
+    [SerializeField] protected float frequency = 5;
     protected float timer = 0;
 
-    protected override void Update()
-    {
-        Move();
-    }
     protected virtual void OnDisable()
     {
         timer = 0;
@@ -17,7 +14,7 @@ public class WaveBullet : TheBullet
     protected override void Move()
     {
         transform.Translate(dir * speed * Time.deltaTime);
-        transform.Translate(new Vector2 (- dir.y, dir.x) * Mathf.Cos(timer*5) * speed * Time.deltaTime);
+        transform.Translate(new Vector2 (- dir.y, dir.x) * Mathf.Cos(timer*frequency) * speed * Time.deltaTime);
         timer += Time.deltaTime;
     }
 }

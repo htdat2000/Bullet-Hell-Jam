@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &288861451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSample: {fileID: 5408896536342631907, guid: 82db5b81f9543a74882ff755e9033e90, type: 3}
+  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
   poolManager: {fileID: 1678529288}
   eShootingStyleType: 0
 --- !u!4 &1678529287
