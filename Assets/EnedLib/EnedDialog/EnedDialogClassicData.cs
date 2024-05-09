@@ -6,8 +6,9 @@ using UnityEngine;
 namespace EnedUtil
 {
     [CreateAssetMenu(fileName = "New Ened Dialog Classic Data", menuName = "EnedUtil/Ened Dialog Classic Data")]
-    public class EnedDialogClassicData : ScriptableObject, IEDialogConvertible
-    {
+    public class EnedDialogClassicData : ScriptableObject, IEDialogConvertible 
+    {   //Containing dialog data 
+        //Convert classic data to sentence list
         public List<EnedSentenceClassicData> sentenceClassicDatas;
         public List<EnedSentence> ConvertToSentenceList(out bool isSuccess)
         {
@@ -23,7 +24,7 @@ namespace EnedUtil
     }
     [Serializable]
     public class EnedSentenceClassicData : IESentenceConvertible
-    {
+    {   //Containing classic data that dev writes in it which will be converted into sentences 
         [SerializeField] private string sentenceID;
         [SerializeField] private string actorID; // LOC
         [SerializeField] private string contentID; // LOC

@@ -5,12 +5,12 @@ using System.Text;
 
 namespace EnedUtil
 {
-    public class EnedDialog
+    public class EnedDialog 
     {
         private List<EnedSentence> sentences = new();
         private int currentSentenceIndex = 0;
-        public List<EnedSentence> LoadDialog(IEDialogConvertible rawData)
-        {
+        public List<EnedSentence> LoadDialog(IEDialogConvertible rawData) 
+        {   //Load the sentence list from data source for using 
             if (rawData == null)
             {
                 Debug.LogError("[EnedDialog/LoadDialog] failed because rawData = null!!!");
@@ -25,11 +25,11 @@ namespace EnedUtil
             return this.sentences;
         }
         public EnedSentence GetSentence(out bool isSuccess, int sentenceIndex = -1)
-        {
+        {   //Get the sentence from the list by it index 
             if (sentenceIndex < 0)
                 sentenceIndex = currentSentenceIndex;
 
-            if (sentences != null && sentenceIndex < sentences.Count)
+            if (sentences != null && sentenceIndex < sentences.Count) //get the sentence corresponding to the index
             {
                 currentSentenceIndex++;
                 isSuccess = true;
@@ -41,7 +41,7 @@ namespace EnedUtil
         }
     }
 
-    public class EnedSentence
+    public class EnedSentence //this class contain sentences and data relating to it 
     {
         public string SentenceID {get; set;}
         public string ActorID {get; set;}
