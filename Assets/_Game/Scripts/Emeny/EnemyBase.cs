@@ -1,3 +1,4 @@
+using Bullet.Manager;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Bullet.Enemy
     public class EnemyBase : MonoBehaviour
     {
         private Vector2 endPoint;
-        public virtual void Move()
+        public virtual void Move(eAppearanceMovement eAppearanceMovement)
         {
             //Raining drop movement
             this.transform.position = this.endPoint + Vector2.up * 10f; 
