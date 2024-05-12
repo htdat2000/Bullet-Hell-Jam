@@ -18,8 +18,10 @@ namespace Bullet.Manager
     public enum eEnemyPositioning
     {
         Unknown = -1,
-        LRUP = 0, LRDU = 1,
+
+        LRUD = 0, LRDU = 1,
         RLUD = 2, RLDU = 3,
+
         UDLR = 4, UDRL = 5,
         DULR = 6, DURL = 7,
     }

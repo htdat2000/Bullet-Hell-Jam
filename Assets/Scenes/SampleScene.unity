@@ -660,7 +660,7 @@ MonoBehaviour:
     AppearanceType: 0
     EnemyPositioning: 0
     EnemyAlginment: 0
-    appearanceData: {x: 5, y: 4}
+    appearanceData: {x: 5, y: 3}
 --- !u!4 &960764665
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ namespace Bullet.Enemy
         private Vector2 endPoint;
         public virtual void Move()
         {
+            //Raining drop movement
+            this.transform.position = this.endPoint + Vector2.up * 10f; 
             this.transform.DOMove(endPoint, 0.5f);
         }
         public void SetStartPoint(Vector2 startPoint)

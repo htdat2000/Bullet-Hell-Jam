@@ -13,7 +13,7 @@ namespace Bullet.Manager
         {
             this.enemyPositionBoundary = new (topLeft.position, topRight.position);
         }
-        public void SpawnEnemies(WaveConfig spawnData, Func<Vector2, EnemyBase> enemySpawn)
+        public void SpawnEnemies(WaveConfig spawnData, Func<EnemyBase> enemySpawn, Action callback = null)
         {
             int spawnQuantity = spawnData.Quantity;
             
@@ -30,30 +30,92 @@ namespace Bullet.Manager
             eAppearanceMovement AppearanceType  = spawnData.AppearanceType;            
             eEnemyPositioning EnemyPositioning = spawnData.EnemyPositioning;
 
-            StartCoroutine(SpawnEnemiesCor(appearanceData.x, appearanceData.y, enemySpawn, spawnQuantity));
+            // StartCoroutine(SpawnEnemiesCor(appearanceData.x, appearanceData.y, enemySpawn, spawnQuantity));
+            StartCoroutine(SpawnEnemiesCor(spawnData, enemySpawn, callback));
         }
 
-        //DULR - Flex
-        private IEnumerator SpawnEnemiesCor(int column, int row, Func<Vector2, EnemyBase> enemySpawn, int maxSpawn, Action callback = null)
+        private IEnumerator SpawnEnemiesCor(WaveConfig spawnData, Func<EnemyBase> enemySpawn, Action callback = null)
         {
-            float columnStep= (this.enemyPositionBoundary.Item2.x - this.enemyPositionBoundary.Item1.x) / (column - 1); //Affected by eEnemyAlginment
-            float rowStep = (this.enemyPositionBoundary.Item1.y - this.enemyPositionBoundary.Item2.y) / (row - 1); //Affected by eEnemyAlginment
+            //Non center
+            int column = spawnData.appearanceData.x;
+            int row = spawnData.appearanceData.y;
+
+            Vector2 topleft = this.enemyPositionBoundary.Item1;
+            Vector2 downright = this.enemyPositionBoundary.Item2;
+
+            if (column <= 1)
+            {
+                float middleColum = (topleft.x + downright.x) / 2;
+                topleft.x = middleColum;
+                downright.x = middleColum;
+            }
+            if (row <= 1)
+            {
+                float middleRow = (topleft.y + downright.y) / 2;
+                topleft.y = middleRow;
+                downright.y = middleRow;
+            }
+
+            float columnStep = (downright.x - topleft.x) / (column >= 1 ? column - 1 : 1);
+            float rowStep = (topleft.y - downright.y) / (row >= 1 ? row - 1 : 1);
             int count = 0;
 
-            Vector2 firstPoint = new Vector2(this.enemyPositionBoundary.Item1.x, this.enemyPositionBoundary.Item2.y); //Affected by eEnemyPositioning
-            for (int i = 0; i < column; i++) //Affected by eEnemyPositioning
+            Vector2 firstPoint = spawnData.GetFirstPosition(topleft, downright);
+            
+            //DULR
+            int firstLoop = spawnData.IsHorizontalToVertical() ? column : row  ; 
+            int secondLoop = spawnData.IsHorizontalToVertical() ? row : column  ;
+            bool is1stRevert = spawnData.IsFirstAxisRevertSpawn();
+            bool is2ndRevert = spawnData.IsSecondAxisRevertSpawn();
+
+            bool isHorizontalToVertical = spawnData.IsHorizontalToVertical();
+            if (isHorizontalToVertical)
             {
-                if (count == maxSpawn) 
+                firstLoop = row; secondLoop = column;
+            }
+            else
+            {
+                firstLoop = column; secondLoop = row;
+            }
+
+            for (int i = 0; i < firstLoop; i++)
+            {
+                if (count == spawnData.Quantity) 
                         break;
-                for (int j = 0; j < row; j++) //Affected by eEnemyPositioning
+                for (int j = 0; j < secondLoop; j++)
                 {
-                    if (count == maxSpawn) 
+                    if (count == spawnData.Quantity) 
                         break;
-                    Vector2 endPoint = firstPoint + Vector2.right * i * columnStep  + Vector2.up * j * rowStep;
-                    Vector2 startPoint = endPoint + Vector2.up * 10f; //Affected by eAppearanceMovement
-                    EnemyBase newEnemy = enemySpawn.Invoke(startPoint);
+
+                    int columnIndex = 0;
+                    int rowIndex = 0;
+                    if (isHorizontalToVertical)
+                    {
+                        columnIndex = j; rowIndex = i;
+                        if (is1stRevert)
+                            columnIndex *= -1;
+                        if (is2ndRevert)
+                            rowIndex *= -1;
+                    }
+                    else
+                    {
+                        columnIndex = i; rowIndex = j;
+                        if (is1stRevert)
+                            rowIndex *= -1;
+                        if (is2ndRevert)
+                            columnIndex *= -1;
+                    }
+
+                    Vector2 endPoint = firstPoint + Vector2.right * columnIndex * columnStep + Vector2.up * rowIndex * rowStep;
+
+
+
+                    EnemyBase newEnemy = enemySpawn.Invoke();
                     newEnemy.SetEndPoint(endPoint);
                     newEnemy.Move(); //Affected by eAppearanceMovement
+
+
+
                     count ++;
                     yield return new WaitForSeconds(0.5f);
                 }

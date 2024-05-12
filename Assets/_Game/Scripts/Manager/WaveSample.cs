@@ -22,9 +22,9 @@ public class WaveSample : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            enemySpawnerController.SpawnEnemies(waveConfig, (firstPosition) => {
-                return Instantiate(waveConfig.EnemySample, firstPosition, Quaternion.identity, this.enemiesContainer);
-            });
+            enemySpawnerController.SpawnEnemies(waveConfig, () => {
+                return Instantiate(waveConfig.EnemySample, this.enemiesContainer);
+            }, null);
         }
     }
 }
