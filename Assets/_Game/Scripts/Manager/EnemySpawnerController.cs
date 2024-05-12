@@ -1,10 +1,12 @@
 using Bullet.Enemy;
 using UnityEngine;
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 
 namespace Bullet.Manager
 {
-    public class EnemySpawnerController
+    public class EnemySpawnerController : MonoBehaviour
     {
         private (Vector2 /*top-left*/, Vector2 /*bottom-right*/) enemyPositionBoundary;
         public void Init(Transform topLeft, Transform topRight)
@@ -15,30 +17,48 @@ namespace Bullet.Manager
         {
             int spawnQuantity = spawnData.Quantity;
             
-            eEnemyAlginment EnemyAlginment = spawnData.EnemyAlginment;
-            Vector2 appearanceData = spawnData.appearanceData;
+            Vector2Int appearanceData = spawnData.appearanceData;
             //Grid the boundary
             //Calculate for Flex
             if (appearanceData.x == 1) 
                 appearanceData.x = 2;
-            float column= (this.enemyPositionBoundary.Item2.x - this.enemyPositionBoundary.Item1.x) / (appearanceData.x - 1);
-
             if (appearanceData.y == 1) 
                 appearanceData.y = 2;
-            float rowStep = (this.enemyPositionBoundary.Item1.y - this.enemyPositionBoundary.Item2.y) / (appearanceData.y - 1);
 
-            for (int i = 0; i < appearanceData.x; i++)
+
+            eEnemyAlginment EnemyAlginment = spawnData.EnemyAlginment;
+            eAppearanceMovement AppearanceType  = spawnData.AppearanceType;            
+            eEnemyPositioning EnemyPositioning = spawnData.EnemyPositioning;
+
+            StartCoroutine(SpawnEnemiesCor(appearanceData.x, appearanceData.y, enemySpawn, spawnQuantity));
+        }
+
+        //DULR - Flex
+        private IEnumerator SpawnEnemiesCor(int column, int row, Func<Vector2, EnemyBase> enemySpawn, int maxSpawn, Action callback = null)
+        {
+            float columnStep= (this.enemyPositionBoundary.Item2.x - this.enemyPositionBoundary.Item1.x) / (column - 1); //Affected by eEnemyAlginment
+            float rowStep = (this.enemyPositionBoundary.Item1.y - this.enemyPositionBoundary.Item2.y) / (row - 1); //Affected by eEnemyAlginment
+            int count = 0;
+
+            Vector2 firstPoint = new Vector2(this.enemyPositionBoundary.Item1.x, this.enemyPositionBoundary.Item2.y); //Affected by eEnemyPositioning
+            for (int i = 0; i < column; i++) //Affected by eEnemyPositioning
             {
-                for (int j = 0; j < appearanceData.y; j++)
+                if (count == maxSpawn) 
+                        break;
+                for (int j = 0; j < row; j++) //Affected by eEnemyPositioning
                 {
-                    enemySpawn.Invoke(this.enemyPositionBoundary.Item1 + Vector2.right * i * column  + Vector2.down * j * rowStep);
+                    if (count == maxSpawn) 
+                        break;
+                    Vector2 endPoint = firstPoint + Vector2.right * i * columnStep  + Vector2.up * j * rowStep;
+                    Vector2 startPoint = endPoint + Vector2.up * 10f; //Affected by eAppearanceMovement
+                    EnemyBase newEnemy = enemySpawn.Invoke(startPoint);
+                    newEnemy.SetEndPoint(endPoint);
+                    newEnemy.Move(); //Affected by eAppearanceMovement
+                    count ++;
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
-
-            eAppearanceMovement AppearanceType  = spawnData.AppearanceType;
-            
-            
-            eEnemyPositioning EnemyPositioning = spawnData.EnemyPositioning;
+            callback?.Invoke();
         }
     }
 }

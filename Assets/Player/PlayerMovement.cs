@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     protected void Move()
     {
         Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        Debug.Log(moveDir);
         rb.velocity = speed * Time.deltaTime * moveDir;
     }
 }

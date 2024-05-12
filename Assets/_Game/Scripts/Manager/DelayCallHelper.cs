@@ -8,6 +8,11 @@ namespace Bullet.Manager
     public class DelayCallHelper : MonoBehaviour
     {
         static public DelayCallHelper Instance { get; private set; }
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+        }
 
         public Coroutine DelayCall(float delayTime, bool condition, Action next, Action end)
         {

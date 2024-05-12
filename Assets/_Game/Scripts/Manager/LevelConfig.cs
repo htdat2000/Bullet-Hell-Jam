@@ -28,6 +28,6 @@ namespace Bullet.Manager
         public eAppearanceMovement AppearanceType;
         public eEnemyPositioning EnemyPositioning;
         public eEnemyAlginment EnemyAlginment = eEnemyAlginment.Flex;
-        public Vector2 appearanceData; //Column - Row
+        public Vector2Int appearanceData; //Column - Row
     }
 }
