@@ -335,9 +335,13 @@ GameObject:
   - component: {fileID: 596693234}
   - component: {fileID: 596693236}
   - component: {fileID: 596693237}
+  - component: {fileID: 596693238}
+  - component: {fileID: 596693239}
+  - component: {fileID: 596693240}
+  - component: {fileID: 596693241}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466bd417df9b6a74baa11cf6738dd2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 596693238}
   speed: 4
 --- !u!50 &596693237
 Rigidbody2D:
@@ -443,6 +448,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &596693238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596693233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ba3313421c1d343868f41f84227d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &596693239
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596693233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &596693240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596693233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
+  poolManager: {fileID: 596693241}
+  eShootingStyleType: 0
+  shootCooldownTime: 1
+--- !u!114 &596693241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596693233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dcaba9050096149802ce446a6c0bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632590982
 GameObject:
   m_ObjectHideFlags: 0

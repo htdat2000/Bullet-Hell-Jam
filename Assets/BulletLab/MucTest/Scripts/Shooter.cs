@@ -13,17 +13,33 @@ namespace Bullet
         [SerializeField] private ShootingStyle currentShootingStyle; //the way that the bullet is shooted
         [SerializeField] private eShootingStyleType eShootingStyleType;
 
+        [SerializeField] protected float shootCooldownTime = 1;
+        protected float shootCooldown = 1;
+
+        protected void Start()
+        {
+            CheckShootingStyle();
+        }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (shootCooldown < 0)
             {
-                CheckShootingStyle();
                 Shot();
+                shootCooldown = shootCooldownTime;
+            }
+            else
+            {
+                shootCooldown -= Time.deltaTime;
             }
         }
-
-        private void Shot()
+        protected void Shot(eShootingStyleType _eShootingStyleType = eShootingStyleType.Unknown)
         {
+            if(_eShootingStyleType != eShootingStyleType.Unknown)
+            {
+                eShootingStyleType = _eShootingStyleType;
+                CheckShootingStyle();
+            }
+
             this.currentShootingStyle.Trigger(this.gameObject, spawnBullet: (dir) =>
                 SpawnBullet("Simple", this.bulletSample, dir));
         }
