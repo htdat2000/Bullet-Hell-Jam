@@ -44,13 +44,14 @@ namespace Bullet.Manager
             Vector2 downright = this.enemyPositionBoundary.Item2;
 
             if (column <= 1)
-            {
+            {   //Get the middle column by dividing sum of x value of left and right 
                 float middleColum = (topleft.x + downright.x) / 2;
                 topleft.x = middleColum;
                 downright.x = middleColum;
             }
             if (row <= 1)
-            {
+            {   //The middle row is the middle of the box 
+                //Get it by dividing the length of the cross (sum of top left and bottom right )
                 float middleRow = (topleft.y + downright.y) / 2;
                 topleft.y = middleRow;
                 downright.y = middleRow;

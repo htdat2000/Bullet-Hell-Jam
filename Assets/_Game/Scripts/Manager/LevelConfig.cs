@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace Bullet.Manager
 {
-
+    //each level will have many phases.
+    //In each phase will have several waves.
     [CreateAssetMenu(fileName = "New Ened Dialog Classic Data", menuName = "Game Config/Level Config")]
     public class LevelConfig : ScriptableObject
     {
-        public List<PhaseConfig> PhaseConfigs;
+        public List<PhaseConfig> PhaseConfigs; 
         // public BossBaseBoss; 
     }
 
@@ -22,15 +23,15 @@ namespace Bullet.Manager
 
     [Serializable]
     public class WaveConfig
-    {
+    {   //The number of enemies will be spawned and how it spawned in wave
         public EnemyBase EnemySample;
         public int Quantity;
         public eAppearanceMovement AppearanceType;
         public eEnemyPositioning EnemyPositioning;
         public eEnemyAlginment EnemyAlginment = eEnemyAlginment.Flex;
-        public Vector2Int appearanceData; //Column - Row
+        public Vector2Int appearanceData; //Number of Column - Row 
 
-        public bool IsHorizontalToVertical()
+        public bool IsHorizontalToVertical()    //whether enemies fill a row then move to next row or not
         {
             return 
                 this.EnemyPositioning == eEnemyPositioning.LRUD || 
@@ -58,22 +59,22 @@ namespace Bullet.Manager
         }
 
         public Vector2 GetFirstPosition(Vector2 upleft, Vector2 downright)
-        {
+        {   
             switch (this.EnemyPositioning)
             {
-                case eEnemyPositioning.LRUD:
+                case eEnemyPositioning.LRUD: //2 cases start at the up left position 
                 case eEnemyPositioning.UDLR:
                     return upleft;
 
-                case eEnemyPositioning.LRDU:
+                case eEnemyPositioning.LRDU: //2 cases start at the down left position 
                 case eEnemyPositioning.DULR:
-                    return new Vector2(upleft.x, downright.y);
+                    return new Vector2(upleft.x, downright.y); 
 
-                case eEnemyPositioning.RLUD:
+                case eEnemyPositioning.RLUD: //2 cases start at the up right position 
                 case eEnemyPositioning.UDRL:
-                    return new Vector2(downright.x, upleft.y);
+                    return new Vector2(downright.x, upleft.y); 
 
-                case eEnemyPositioning.RLDU:
+                case eEnemyPositioning.RLDU: //2 cases start at the down right position 
                 case eEnemyPositioning.DURL:
                     return downright;
 

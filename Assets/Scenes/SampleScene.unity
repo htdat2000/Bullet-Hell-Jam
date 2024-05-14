@@ -719,7 +719,7 @@ MonoBehaviour:
     EnemySample: {fileID: 9121169923978695941, guid: b37ad0db031069542908b5b960e54207, type: 3}
     Quantity: 20
     AppearanceType: 0
-    EnemyPositioning: 0
+    EnemyPositioning: 1
     EnemyAlginment: 0
     appearanceData: {x: 5, y: 3}
 --- !u!4 &960764665
