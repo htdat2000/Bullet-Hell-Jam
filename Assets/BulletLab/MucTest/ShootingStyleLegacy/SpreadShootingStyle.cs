@@ -20,6 +20,8 @@ namespace Bullet
         public override void Trigger(GameObject shooter,
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
+            currentDir = shootDir;
+
             minDir = GetRotatedVector(currentDir, -MathF.PI / 6);
             maxDir = GetRotatedVector(currentDir, MathF.PI / 6);
 
@@ -43,7 +45,7 @@ namespace Bullet
                 },
                 end: () =>
                 {
-                    currentDir = Vector2.down;
+                    currentDir = shootDir;
                     currentProjectiles = 0;
                     onShotFinish?.Invoke();
                 });

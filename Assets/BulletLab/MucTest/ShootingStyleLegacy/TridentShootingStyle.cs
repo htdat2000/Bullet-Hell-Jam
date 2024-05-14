@@ -11,9 +11,9 @@ namespace Bullet
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
             List<Vector2> hardDirs = new();
-            hardDirs.Add(Vector2.down);
-            hardDirs.Add(GetRotatedVector(Vector2.down, Mathf.PI / 4));
-            hardDirs.Add(GetRotatedVector(Vector2.down, Mathf.PI / -4));
+            hardDirs.Add(shootDir);
+            hardDirs.Add(GetRotatedVector(shootDir, Mathf.PI / 4));
+            hardDirs.Add(GetRotatedVector(shootDir, Mathf.PI / -4));
 
             for (int i = 0; i < 3; i++)
             {

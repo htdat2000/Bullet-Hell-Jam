@@ -8,7 +8,7 @@ namespace Bullet
     public class MultiWayShootingStyle : ShootingStyle
     {
         [SerializeField] protected int numberOfProjectiles = 4;
-
+    
         public override void Trigger(GameObject shooter, 
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
@@ -25,7 +25,7 @@ namespace Bullet
         }
         protected Vector2 GetTheStartWayDir()
         {
-            Vector2 currentDir = Vector2.down;
+            Vector2 currentDir = shootDir;
             currentDir = GetRotatedVector(currentDir, -MathF.PI/4);
             return currentDir;
         }

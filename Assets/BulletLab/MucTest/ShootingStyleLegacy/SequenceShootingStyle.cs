@@ -12,11 +12,13 @@ namespace Bullet
 
         private int currentProjectiles = 0;
         Vector2 currentDir = Vector2.down;
+
         float angleStep => (2 * Mathf.PI) / numberOfProjectiles;
 
         public override void Trigger(GameObject shooter, 
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {
+            currentDir = shootDir;
             CallRecursive(spawnBullet, onShotFinish);
             if (onShotFinish != null) onShotFinish?.Invoke();
         }
@@ -32,7 +34,7 @@ namespace Bullet
                 },
                 end: () =>{
                     currentProjectiles = 0;
-                    Vector2 currentDir = Vector2.down;
+                    Vector2 currentDir = shootDir;
                     onShotFinish?.Invoke();
                 });
         }
