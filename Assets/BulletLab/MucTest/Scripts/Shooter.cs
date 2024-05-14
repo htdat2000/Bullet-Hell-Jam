@@ -16,6 +16,8 @@ namespace Bullet
         [SerializeField] protected float shootCooldownTime = 1;
         protected float shootCooldown = 1;
 
+        [SerializeField] protected Vector2 shootDir = Vector2.down;
+
         protected void Start()
         {
             CheckShootingStyle();
@@ -80,6 +82,7 @@ namespace Bullet
                     this.currentShootingStyle = new SpreadShootingStyle();
                     break;
             }
+            this.currentShootingStyle.SetShootDir(shootDir);
         }
     }
 }

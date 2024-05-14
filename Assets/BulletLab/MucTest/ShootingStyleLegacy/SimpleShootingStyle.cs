@@ -8,7 +8,7 @@ namespace Bullet
         public override void Trigger(GameObject shooter, 
             Action<Vector2> spawnBullet, Action onShotFinish = null)
         {            
-            spawnBullet?.Invoke(Vector2.down);
+            spawnBullet?.Invoke(shootDir);
             onShotFinish?.Invoke();
         }
     }
