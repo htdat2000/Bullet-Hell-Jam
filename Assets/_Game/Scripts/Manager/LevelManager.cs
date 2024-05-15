@@ -6,6 +6,12 @@ namespace Bullet.Manager
 {
     public class LevelManager : MonoBehaviour
     {
-        
+        protected void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.T))
+            {
+                Event.GameEvents.OnWaveStart?.Invoke();
+            }
+        }
     }
 }

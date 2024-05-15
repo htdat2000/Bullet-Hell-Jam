@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnedUtil;
+using Event;
 
 namespace Bullet
 {
@@ -17,14 +18,16 @@ namespace Bullet
         protected float shootCooldown = 1;
 
         [SerializeField] protected Vector2 shootDir = Vector2.down;
+        protected bool isWaveStarted = false;
 
         protected void Start()
         {
+            GameEvents.OnWaveStart += OnWaveStart;
             CheckShootingStyle();
         }
         private void Update()
         {
-            if (shootCooldown < 0)
+            if ((shootCooldown < 0) && (isWaveStarted == true))
             {
                 Shot();
                 shootCooldown = shootCooldownTime;
@@ -34,9 +37,13 @@ namespace Bullet
                 shootCooldown -= Time.deltaTime;
             }
         }
+        protected void OnDisable()
+        {
+            GameEvents.OnWaveStart -= OnWaveStart;
+        }
         protected void Shot(eShootingStyleType _eShootingStyleType = eShootingStyleType.Unknown)
         {
-            if(_eShootingStyleType != eShootingStyleType.Unknown)
+            if (_eShootingStyleType != eShootingStyleType.Unknown)
             {
                 eShootingStyleType = _eShootingStyleType;
                 CheckShootingStyle();
@@ -83,6 +90,10 @@ namespace Bullet
                     break;
             }
             this.currentShootingStyle.SetShootDir(shootDir);
+        }
+        protected void OnWaveStart()
+        {
+            isWaveStarted = true;
         }
     }
 }
