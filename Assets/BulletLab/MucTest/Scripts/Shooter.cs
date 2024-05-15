@@ -17,7 +17,6 @@ namespace Bullet
         [SerializeField] protected float shootCooldownTime = 1;
         protected float shootCooldown = 1;
 
-        [SerializeField] protected Vector2 shootDir = Vector2.down;
         protected bool isWaveStarted = false;
 
         protected void Start()
@@ -25,30 +24,18 @@ namespace Bullet
             GameEvents.OnWaveStart += OnWaveStart;
             CheckShootingStyle();
         }
-        private void Update()
-        {
-            if ((shootCooldown < 0) && (isWaveStarted == true))
-            {
-                Shot();
-                shootCooldown = shootCooldownTime;
-            }
-            else
-            {
-                shootCooldown -= Time.deltaTime;
-            }
-        }
         protected void OnDisable()
         {
             GameEvents.OnWaveStart -= OnWaveStart;
         }
-        protected void Shot(eShootingStyleType _eShootingStyleType = eShootingStyleType.Unknown)
+        public void Shot(Vector2 _dir, eShootingStyleType _eShootingStyleType = eShootingStyleType.Unknown)
         {
             if (_eShootingStyleType != eShootingStyleType.Unknown)
             {
                 eShootingStyleType = _eShootingStyleType;
                 CheckShootingStyle();
             }
-
+            this.currentShootingStyle.SetShootDir(_dir);
             this.currentShootingStyle.Trigger(this.gameObject, spawnBullet: (dir) =>
                 SpawnBullet("Simple", this.bulletSample, dir));
         }
@@ -89,7 +76,6 @@ namespace Bullet
                     this.currentShootingStyle = new SpreadShootingStyle();
                     break;
             }
-            this.currentShootingStyle.SetShootDir(shootDir);
         }
         protected void OnWaveStart()
         {

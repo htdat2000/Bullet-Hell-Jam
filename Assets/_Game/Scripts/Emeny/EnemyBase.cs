@@ -7,6 +7,9 @@ namespace Bullet.Enemy
 {
     public class EnemyBase : MonoBehaviour
     {
+        protected int defaultHP = 3;
+        protected int hp = 3;
+
         protected Vector3 originPosition; //this is the position that the enemy stay when it is spawned
         protected Vector2 endPoint;
         protected Tweener tweener;
@@ -14,7 +17,11 @@ namespace Bullet.Enemy
         protected bool isWaveStarted = false;
 
         protected float moveSpeed = 2;
-    
+
+        protected virtual void OnEnable()
+        {
+            hp = defaultHP;
+        }
         protected virtual void Start()
         {
             GameEvents.OnWaveStart += OnWaveStart;
@@ -60,9 +67,25 @@ namespace Bullet.Enemy
                 tweener.Kill();
             }
         }
+        protected void TakeDmg(int _dmg)
+        {
+            hp -= _dmg;
+            if(hp <= 0)
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
         protected virtual void OnWaveStart()
         {
             isWaveStarted = true;
+        }
+        protected void OnTriggerEnter2D(Collider2D col)
+        {
+            if(col.CompareTag("Bullet"))
+            {
+                col.gameObject.SetActive(false);
+                TakeDmg(1);
+            }
         }
     }
 }
