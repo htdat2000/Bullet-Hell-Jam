@@ -26,6 +26,7 @@ namespace Player
         {
             if(col.CompareTag("Enemy"))
             {
+                col.gameObject.SetActive(false);
                 Dmg(1);
             }
         }

@@ -427,6 +427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 596693238}
   speed: 4
+  shoot: {fileID: 596693240}
+  shootCooldownTime: 1
 --- !u!50 &596693237
 Rigidbody2D:
   serializedVersion: 4
@@ -488,11 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
+  bulletSample: {fileID: 3308035011917754381, guid: eec0ad9949ccf264e8c817761395009c, type: 3}
   poolManager: {fileID: 596693241}
-  eShootingStyleType: 4
+  eShootingStyleType: 0
   shootCooldownTime: 1
-  shootDir: {x: 0, y: 1}
 --- !u!114 &596693241
 MonoBehaviour:
   m_ObjectHideFlags: 0
