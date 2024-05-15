@@ -1,6 +1,7 @@
 using Bullet.Manager;
 using DG.Tweening;
 using UnityEngine;
+using Event;
 
 namespace Bullet.Enemy
 {
@@ -13,13 +14,13 @@ namespace Bullet.Enemy
         protected bool isWaveStarted = false;
 
         protected float moveSpeed = 2;
-
+    
+        protected virtual void Start()
+        {
+            GameEvents.OnWaveStart += OnWaveStart;
+        }
         protected virtual void Update()
         {
-            if(Input.GetKeyDown(KeyCode.T)) //For testing
-            {
-                isWaveStarted = true;
-            }
             if(isWaveStarted == false)
             {
                 return;
@@ -29,6 +30,7 @@ namespace Bullet.Enemy
         protected virtual void OnDisable()
         {
             isWaveStarted = false;
+            GameEvents.OnWaveStart -= OnWaveStart;
         }
         //This is how enemy moves into the screen
         public virtual void MoveSpawn(eAppearanceMovement eAppearanceMovement)
@@ -57,6 +59,10 @@ namespace Bullet.Enemy
             {
                 tweener.Kill();
             }
+        }
+        protected virtual void OnWaveStart()
+        {
+            isWaveStarted = true;
         }
     }
 }
