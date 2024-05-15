@@ -6,12 +6,42 @@ namespace Bullet.Enemy
 {
     public class EnemyBase : MonoBehaviour
     {
-        private Vector2 endPoint;
-        public virtual void Move(eAppearanceMovement eAppearanceMovement)
+        protected Vector3 originPosition; //this is the position that the enemy stay when it is spawned
+        protected Vector2 endPoint;
+        protected Tweener tweener;
+
+        protected bool isWaveStarted = false;
+
+        protected float moveSpeed = 2;
+
+        protected virtual void Update()
         {
+            if(Input.GetKeyDown(KeyCode.T)) //For testing
+            {
+                isWaveStarted = true;
+            }
+            if(isWaveStarted == false)
+            {
+                return;
+            }
+            Move();
+        }
+        protected virtual void OnDisable()
+        {
+            isWaveStarted = false;
+        }
+        //This is how enemy moves into the screen
+        public virtual void MoveSpawn(eAppearanceMovement eAppearanceMovement)
+        {
+            if(tweener != null)
+            {
+                tweener.Kill();
+            }
+
             //Raining drop movement
+            tweener = this.transform.DOMove(endPoint, 0.5f);
             this.transform.position = this.endPoint + Vector2.up * 10f; 
-            this.transform.DOMove(endPoint, 0.5f);
+            tweener.Play().OnComplete(() => {originPosition = this.transform.position;});
         }
         public void SetStartPoint(Vector2 startPoint)
         {
@@ -20,6 +50,13 @@ namespace Bullet.Enemy
         public void SetEndPoint(Vector2 endPoint)
         {
             this.endPoint = endPoint;
+        }
+        protected virtual void Move()
+        {
+            if(tweener != null)
+            {
+                tweener.Kill();
+            }
         }
     }
 }

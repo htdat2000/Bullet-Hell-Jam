@@ -717,7 +717,7 @@ MonoBehaviour:
   enemySpawnerController: {fileID: 960764666}
   enemiesContainer: {fileID: 1979118712}
   waveConfig:
-    EnemySample: {fileID: 9121169923978695941, guid: b37ad0db031069542908b5b960e54207, type: 3}
+    EnemySample: {fileID: 2969261746598188915, guid: 432ef4582e6276244b9d09f508e66b52, type: 3}
     Quantity: 20
     AppearanceType: 0
     EnemyPositioning: 1

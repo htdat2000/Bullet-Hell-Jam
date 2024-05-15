@@ -113,7 +113,7 @@ namespace Bullet.Manager
 
                     EnemyBase newEnemy = enemySpawn.Invoke();
                     newEnemy.SetEndPoint(endPoint);
-                    newEnemy.Move(spawnData.AppearanceType); //Affected by eAppearanceMovement
+                    newEnemy.MoveSpawn(spawnData.AppearanceType); //Affected by eAppearanceMovement
 
 
 
