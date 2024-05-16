@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2d50fbc34ed5e44acfa9d511eba57e, type: 3}
+  m_Name: LevelOne
+  m_EditorClassIdentifier: 
+  PhaseConfigs:
+  - WaveConfigs:
+    - EnemySample: {fileID: 2969261746598188915, guid: 432ef4582e6276244b9d09f508e66b52, type: 3}
+      Quantity: 5
+      AppearanceType: 0
+      EnemyPositioning: 0
+      EnemyAlginment: 0
+      appearanceData: {x: 5, y: 3}
+    - EnemySample: {fileID: 2969261746598188915, guid: 432ef4582e6276244b9d09f508e66b52, type: 3}
+      Quantity: 10
+      AppearanceType: 0
+      EnemyPositioning: 2
+      EnemyAlginment: 0
+      appearanceData: {x: 5, y: 2}

@@ -764,6 +764,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa85e5487b34864bb611c2e4f65d155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topLeft: {fileID: 1031052417}
+  botRight: {fileID: 632590983}
+  enemySpawnerController: {fileID: 960764666}
+  enemiesContainer: {fileID: 1979118712}
+  levelOneConfig: {fileID: 11400000, guid: 0f7625193fad62745868cf5e00ee974b, type: 2}
 --- !u!1 &1031052416
 GameObject:
   m_ObjectHideFlags: 0
