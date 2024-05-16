@@ -17,7 +17,7 @@ namespace Player
         protected float skillCooldown = 0;
 
         [SerializeField] protected Shooter shoot;
-        [SerializeField] protected float shootCooldownTime = 1;
+        [SerializeField] protected float shootCooldownTime = 0.5f;
         protected float shootCooldown = 1;
 
         protected bool isWaveStarted = false;
