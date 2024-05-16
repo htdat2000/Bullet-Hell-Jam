@@ -72,6 +72,7 @@ namespace Bullet.Enemy
             hp -= _dmg;
             if(hp <= 0)
             {
+                GameEvents.OnEnemyDefeated?.Invoke();
                 this.gameObject.SetActive(false);
             }
         }

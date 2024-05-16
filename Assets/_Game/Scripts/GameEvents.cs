@@ -8,5 +8,6 @@ namespace Event
     public class GameEvents : MonoBehaviour
     {
         public static Action OnWaveStart;
+        public static Action OnEnemyDefeated;
     }
 }
