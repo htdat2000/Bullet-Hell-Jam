@@ -17,12 +17,12 @@ namespace Bullet
 
         protected bool isWaveStarted = false;
 
-        protected void Start()
+        protected virtual void Start()
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Event.GameEvents.OnWaveStart += OnWaveStart;
         }
-        protected void Update()
+        protected virtual void Update()
         {
             if ((shootCooldown < 0) && (isWaveStarted == true))
             {
@@ -41,15 +41,15 @@ namespace Bullet
         {
             shoot.Shot(_dir, _eShootingStyleType);
         }
-        protected void OnDisable()
+        protected virtual void OnDisable()
         {
             Event.GameEvents.OnWaveStart -= OnWaveStart;
         }
-        protected void OnWaveStart()
+        protected virtual void OnWaveStart()
         {
             isWaveStarted = true;
         }
-        protected Vector2 GetPlayerDir()
+        protected virtual Vector2 GetPlayerDir()
         {
             Vector2 playerDir = (player.transform.position - this.transform.position).normalized;
             return playerDir;

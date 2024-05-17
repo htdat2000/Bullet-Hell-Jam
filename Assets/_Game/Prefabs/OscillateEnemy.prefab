@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6234641514835496780}
   - component: {fileID: 2969261746598188915}
   - component: {fileID: -1217520101167247705}
-  - component: {fileID: 8484873226039785213}
+  - component: {fileID: 2563857274086310614}
   - component: {fileID: 8473870807351761463}
   - component: {fileID: -1169527979947780555}
   m_Layer: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373bcbb0d4691dd4b9244e5913bb9450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0.5
 --- !u!50 &-1217520101167247705
 Rigidbody2D:
   serializedVersion: 4
@@ -149,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8484873226039785213
+--- !u!114 &2563857274086310614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +159,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5892258190319212092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb0862d56bdd9c4fab96ee7266e22a3, type: 3}
+  m_Script: {fileID: 11500000, guid: e2eaa3e3147a3724baf448ace9fe6a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 8473870807351761463}
+  eShootingStyleType: 0
   shootCooldownTime: 1
+  chasePlayer: 0
+  bulletQuantity: 3
 --- !u!114 &8473870807351761463
 MonoBehaviour:
   m_ObjectHideFlags: 0

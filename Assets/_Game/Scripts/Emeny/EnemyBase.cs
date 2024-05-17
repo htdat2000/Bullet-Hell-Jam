@@ -16,7 +16,7 @@ namespace Bullet.Enemy
 
         protected bool isWaveStarted = false;
 
-        protected float moveSpeed = 2;
+        [SerializeField] protected float moveSpeed = 2;
 
         protected virtual void OnEnable()
         {
