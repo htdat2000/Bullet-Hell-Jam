@@ -19,8 +19,11 @@ namespace Bullet
 
         protected virtual void Start()
         {
+            shoot = GetComponent<Shooter>();
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Event.GameEvents.OnWaveStart += OnWaveStart;
+
+            shootCooldown = shootCooldownTime;
         }
         protected virtual void Update()
         {

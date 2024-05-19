@@ -81,5 +81,9 @@ namespace Bullet
         {
             isWaveStarted = true;
         }
+        public void ChangeBullet(TheBullet bulletSpl)
+        {
+            bulletSample = bulletSpl;
+        }
     }
 }

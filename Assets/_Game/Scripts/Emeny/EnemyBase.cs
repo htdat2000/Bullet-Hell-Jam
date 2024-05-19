@@ -7,7 +7,7 @@ namespace Bullet.Enemy
 {
     public class EnemyBase : MonoBehaviour
     {
-        protected int defaultHP = 3;
+        [SerializeField] protected int defaultHP = 3;
         protected int hp = 3;
 
         protected Vector3 originPosition; //this is the position that the enemy stay when it is spawned

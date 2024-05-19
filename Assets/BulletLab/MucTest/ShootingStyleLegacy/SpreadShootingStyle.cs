@@ -7,9 +7,9 @@ namespace Bullet
 {
     public class SpreadShootingStyle : ShootingStyle
     {
-        protected float cooldownTime = 0.1f;
+        protected float cooldownTime = 0.05f;
 
-        protected int numberOfProjectiles = 100;
+        protected int numberOfProjectiles = 30;
         protected int currentProjectiles = 0;
 
         protected Vector2 minDir;
@@ -22,8 +22,8 @@ namespace Bullet
         {
             currentDir = shootDir;
 
-            minDir = GetRotatedVector(currentDir, -MathF.PI / 6);
-            maxDir = GetRotatedVector(currentDir, MathF.PI / 6);
+            minDir = GetRotatedVector(currentDir, -MathF.PI / 5);
+            maxDir = GetRotatedVector(currentDir, MathF.PI / 5);
 
             CallRecursive(spawnBullet, onShotFinish);
 
