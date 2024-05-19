@@ -22,8 +22,8 @@ namespace Player
         protected void Dead()
         {
             Debug.Log("You Lose");
-            //Time.timeScale = 0.2f;
-            //SceneManager.LoadSceneAsync("GameOverScene");
+            Time.timeScale = 0.2f;
+            SceneManager.LoadSceneAsync("GameOverScene");
         }
         protected void OnTriggerEnter2D(Collider2D col)
         {
