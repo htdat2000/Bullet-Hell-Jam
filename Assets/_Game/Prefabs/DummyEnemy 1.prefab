@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8471020968197409668}
   - component: {fileID: 1440684107069853690}
+  - component: {fileID: 9121169923978695941}
   - component: {fileID: -6234641514835496780}
-  - component: {fileID: 2969261746598188915}
-  - component: {fileID: -1217520101167247705}
-  - component: {fileID: 2563857274086310614}
-  - component: {fileID: 8473870807351761463}
-  - component: {fileID: -1169527979947780555}
+  - component: {fileID: -1719159639564517868}
+  - component: {fileID: 7762570671318446901}
+  - component: {fileID: -2392821172636419846}
+  - component: {fileID: 6335295930040310889}
   m_Layer: 0
-  m_Name: OscillateEnemy
+  m_Name: DummyEnemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +90,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9121169923978695941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d213455e24df154eb579e6e41beb610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHP: 3
+  moveSpeed: 2
 --- !u!61 &-6234641514835496780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2969261746598188915
+--- !u!114 &-1719159639564517868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,12 +139,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 5892258190319212092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373bcbb0d4691dd4b9244e5913bb9450, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cb0862d56bdd9c4fab96ee7266e22a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHP: 3
-  moveSpeed: 1
---- !u!50 &-1217520101167247705
+  shoot: {fileID: 7762570671318446901}
+  eShootingStyleType: 3
+  shootCooldownTime: 1
+  chasePlayer: 1
+--- !u!114 &7762570671318446901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
+  poolManager: {fileID: -2392821172636419846}
+  eShootingStyleType: 0
+  shootCooldownTime: 1
+--- !u!114 &-2392821172636419846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dcaba9050096149802ce446a6c0bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &6335295930040310889
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -151,48 +195,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2563857274086310614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5892258190319212092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2eaa3e3147a3724baf448ace9fe6a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoot: {fileID: 8473870807351761463}
-  eShootingStyleType: 1
-  shootCooldownTime: 1
-  chasePlayer: 0
-  bulletQuantity: 3
---- !u!114 &8473870807351761463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5892258190319212092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
-  poolManager: {fileID: -1169527979947780555}
-  eShootingStyleType: 0
-  shootCooldownTime: 1
---- !u!114 &-1169527979947780555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5892258190319212092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54dcaba9050096149802ce446a6c0bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -540,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 596693233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -561,7 +561,7 @@ MonoBehaviour:
   player: {fileID: 596693238}
   speed: 4
   shoot: {fileID: 596693240}
-  shootCooldownTime: 0.25
+  shootCooldownTime: 0.5
 --- !u!50 &596693237
 Rigidbody2D:
   serializedVersion: 4
@@ -663,7 +663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612602873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

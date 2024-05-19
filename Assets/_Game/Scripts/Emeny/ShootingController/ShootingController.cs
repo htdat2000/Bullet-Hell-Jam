@@ -54,6 +54,11 @@ namespace Bullet
         }
         protected virtual Vector2 GetPlayerDir()
         {
+            if(player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
+
             Vector2 playerDir = (player.transform.position - this.transform.position).normalized;
             return playerDir;
         }

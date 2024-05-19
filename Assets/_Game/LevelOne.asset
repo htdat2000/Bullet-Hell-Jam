@@ -14,13 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PhaseConfigs:
   - WaveConfigs:
-    - EnemySample: {fileID: -5211897488208285193, guid: 3f27cf4eb9b0a22409be57db5eb949e7, type: 3}
-      Quantity: 1
+    - EnemySample: {fileID: 9121169923978695941, guid: b37ad0db031069542908b5b960e54207, type: 3}
+      Quantity: 6
       AppearanceType: 0
       EnemyPositioning: 0
       EnemyAlginment: 1
-      appearanceData: {x: 2, y: 2}
+      appearanceData: {x: 3, y: 2}
     - EnemySample: {fileID: 2969261746598188915, guid: 432ef4582e6276244b9d09f508e66b52, type: 3}
+      Quantity: 9
+      AppearanceType: 0
+      EnemyPositioning: 2
+      EnemyAlginment: 0
+      appearanceData: {x: 3, y: 4}
+    - EnemySample: {fileID: 2969261746598188915, guid: 432ef4582e6276244b9d09f508e66b52, type: 3}
+      Quantity: 3
+      AppearanceType: 0
+      EnemyPositioning: 2
+      EnemyAlginment: 0
+      appearanceData: {x: 5, y: 2}
+    - EnemySample: {fileID: 9121169923978695941, guid: 1d399c3142f09d94e9dda245ae2c0cf4, type: 3}
+      Quantity: 10
+      AppearanceType: 0
+      EnemyPositioning: 2
+      EnemyAlginment: 0
+      appearanceData: {x: 5, y: 2}
+    - EnemySample: {fileID: -5211897488208285193, guid: 3f27cf4eb9b0a22409be57db5eb949e7, type: 3}
       Quantity: 10
       AppearanceType: 0
       EnemyPositioning: 2

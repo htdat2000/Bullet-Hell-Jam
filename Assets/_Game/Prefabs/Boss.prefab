@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 0}
   eShootingStyleType: 0
-  shootCooldownTime: 5
+  shootCooldownTime: 10
   chasePlayer: 0
   bulletList:
+  - {fileID: 3308035011917754381, guid: 7fdbf74e24878f44e96d0b84bc52531a, type: 3}
   - {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
-  - {fileID: 3308035011917754381, guid: 8a18725464f1138489fd0aca94a82fe6, type: 3}

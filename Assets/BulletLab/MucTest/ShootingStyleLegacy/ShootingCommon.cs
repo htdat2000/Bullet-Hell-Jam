@@ -12,6 +12,7 @@ namespace Bullet
         Sequence,
         Circle,
         MultiWay,
-        Spread
+        Spread,
+        AllDir
     }
 }

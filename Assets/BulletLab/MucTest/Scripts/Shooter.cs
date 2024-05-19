@@ -75,6 +75,9 @@ namespace Bullet
                 case eShootingStyleType.Spread:
                     this.currentShootingStyle = new SpreadShootingStyle();
                     break;
+                case eShootingStyleType.AllDir:
+                    this.currentShootingStyle = new AllDirShootingStyle();
+                    break;
             }
         }
         protected void OnWaveStart()

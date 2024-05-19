@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8473870807351761463}
   - component: {fileID: -1169527979947780555}
   m_Layer: 0
-  m_Name: OscillateEnemy
+  m_Name: OscillateEnemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 8473870807351761463}
-  eShootingStyleType: 1
+  eShootingStyleType: 3
   shootCooldownTime: 1
   chasePlayer: 0
   bulletQuantity: 3

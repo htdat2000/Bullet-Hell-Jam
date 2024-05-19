@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 1440684107069853690}
   - component: {fileID: 9121169923978695941}
   - component: {fileID: -6234641514835496780}
+  - component: {fileID: -1719159639564517868}
+  - component: {fileID: 7762570671318446901}
+  - component: {fileID: -2392821172636419846}
+  - component: {fileID: 6335295930040310889}
   m_Layer: 0
   m_Name: DummyEnemy
   m_TagString: Enemy
@@ -98,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d213455e24df154eb579e6e41beb610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultHP: 3
+  moveSpeed: 2
 --- !u!61 &-6234641514835496780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,3 +130,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1719159639564517868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb0862d56bdd9c4fab96ee7266e22a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot: {fileID: 7762570671318446901}
+  eShootingStyleType: 0
+  shootCooldownTime: 1
+  chasePlayer: 1
+--- !u!114 &7762570671318446901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6eab7f74a94c24897b75f3bda2c21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSample: {fileID: 3308035011917754381, guid: 7c8d6efbbf3ed564fba616533a4e31b1, type: 3}
+  poolManager: {fileID: -2392821172636419846}
+  eShootingStyleType: 0
+  shootCooldownTime: 1
+--- !u!114 &-2392821172636419846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dcaba9050096149802ce446a6c0bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &6335295930040310889
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892258190319212092}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

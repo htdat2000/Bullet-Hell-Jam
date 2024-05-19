@@ -10,7 +10,7 @@ namespace Bullet.Enemy
     {
         public override void MoveSpawn(eAppearanceMovement eAppearanceMovement)
         {
-            endPoint = Vector2.zero;
+            endPoint = new Vector2(0, 3.5f);
             base.MoveSpawn(eAppearanceMovement);
             tweener.OnComplete(() => {
                 GameObject[] miniguns = GameObject.FindGameObjectsWithTag("Minigun");

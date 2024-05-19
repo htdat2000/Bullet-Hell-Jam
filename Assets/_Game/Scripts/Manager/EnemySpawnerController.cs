@@ -118,7 +118,7 @@ namespace Bullet.Manager
 
 
                     count ++;
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                 }
             }
             callback?.Invoke();

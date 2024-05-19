@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3308035011917754381}
   - component: {fileID: 6715473068915424554}
   m_Layer: 0
-  m_Name: LinearBullet
+  m_Name: LinearBulletSlow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2cb6128be9ddb4282e53b45a0326c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   lifeTime: 7
 --- !u!58 &6715473068915424554
 CircleCollider2D:
